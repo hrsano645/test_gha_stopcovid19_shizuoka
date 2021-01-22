@@ -313,6 +313,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       })
     },
     displayOption() {
+      const self = this
       const unit = this.unit
       const sumArray = this.eachArraySum(this.chartData)
       const data = this.chartData
@@ -345,7 +346,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               }: ${cases} ${unit} (${this.$t('合計')}: ${casesTotal} ${unit})`
             },
             title(tooltipItem, data) {
-              return String(data.labels![tooltipItem[0].index!])
+              const label = data.labels![tooltipItem[0].index!] as string
+              return self.$d(new Date(label), 'date')
             }
           }
         },
