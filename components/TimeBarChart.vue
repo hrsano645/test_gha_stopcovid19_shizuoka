@@ -195,7 +195,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
       return {
         lText: lastData.cumulative.toLocaleString(),
-        sText: `${this.chartData.slice(-1)[0].label} ${this.$t(
+        sText: `${formattedLastDay} ${this.$t(
           '累計値'
         )}（${this.$t('前日比')}: ${this.displayCumulativeRatio} ${
           this.unit
