@@ -180,10 +180,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return this.formatDayBeforeRatio(lastDay - lastDayBefore)
     },
     displayInfo() {
+      const lastData = this.chartData.slice(-1)[0]
+      const formattedLastDay = this.$d(new Date(lastData.label), 'date')
       if (this.dataKind === 'transition') {
         return {
-          lText: `${this.chartData.slice(-1)[0].transition.toLocaleString()}`,
-          sText: `${this.chartData.slice(-1)[0].label} ${this.$t(
+          lText: `${lastData.transition.toLocaleString()}`,
+          sText: `${formattedLastDay} ${this.$t(
             '実績値'
           )}（${this.$t('前日比')}: ${this.displayTransitionRatio} ${
             this.unit
@@ -192,9 +194,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         }
       }
       return {
-        lText: this.chartData[
-          this.chartData.length - 1
-        ].cumulative.toLocaleString(),
+        lText: lastData.cumulative.toLocaleString(),
         sText: `${this.chartData.slice(-1)[0].label} ${this.$t(
           '累計値'
         )}（${this.$t('前日比')}: ${this.displayCumulativeRatio} ${
