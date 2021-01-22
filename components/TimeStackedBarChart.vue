@@ -370,7 +370,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: '#808080',
                 maxRotation: 0,
                 callback: (label: string) => {
-                  return label.split('/')[1]
+                  return label.split('/')[2]
                 }
               }
               // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
@@ -394,7 +394,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               type: 'time',
               time: {
                 unit: 'month',
-                parser: 'M/D',
+                parser: 'Y/M/D',
                 displayFormats: {
                   month: 'MMM'
                 }
@@ -474,7 +474,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxRotation: 0,
                 minRotation: 0,
                 callback: (label: string) => {
-                  return label.split('/')[1]
+                  return label.split('/')[2]
                 }
               }
             },
