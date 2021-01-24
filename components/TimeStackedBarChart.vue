@@ -243,12 +243,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   }),
   computed: {
     displayInfo() {
-      const lastDay: string= this.labels[this.labels.length - 1]
+      const lastDay: string = this.labels[this.labels.length - 1]
       const date = this.$d(new Date(lastDay), 'date')
       if (this.dataKind === 'transition') {
         return {
           lText: this.sum(this.pickLastNumber(this.chartData)).toLocaleString(),
-          sText: `${this.$t('{date}の合計', {date})}`,
+          sText: `${this.$t('{date}の合計', { date })}`,
           unit: this.unit
         }
       }
@@ -256,10 +256,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         lText: (
           this.sum(this.cumulativeSum(this.chartData)) + this.initialCumulative
         ).toLocaleString(),
-        sText: `${this.$t('{date}までの累計（内{offset}人は2020/4/26までの累計）', {
-          date: date,
-          offset: this.initialCumulative.toLocaleString()
-        })}`,
+        sText: `${this.$t(
+          '{date}までの累計（内{offset}人は2020/4/26までの累計）', 
+          {
+            date,
+            offset: this.initialCumulative.toLocaleString()
+          }
+        )}`,
         unit: this.unit
       }
     },

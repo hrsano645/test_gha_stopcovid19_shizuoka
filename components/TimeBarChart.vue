@@ -185,21 +185,17 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       if (this.dataKind === 'transition') {
         return {
           lText: `${lastData.transition.toLocaleString()}`,
-          sText: `${formattedLastDay} ${this.$t(
-            '実績値'
-          )}（${this.$t('前日比')}: ${this.displayTransitionRatio} ${
-            this.unit
-          }）`,
+          sText: `${formattedLastDay} ${this.$t('実績値')}（${this.$t(
+            '前日比'
+          )}: ${this.displayTransitionRatio} ${this.unit}）`,
           unit: this.unit
         }
       }
       return {
         lText: lastData.cumulative.toLocaleString(),
-        sText: `${formattedLastDay} ${this.$t(
-          '累計値'
-        )}（${this.$t('前日比')}: ${this.displayCumulativeRatio} ${
-          this.unit
-        }）`,
+        sText: `${formattedLastDay} ${this.$t('累計値')}（${this.$t(
+          '前日比'
+        )}: ${this.displayCumulativeRatio} ${this.unit}）`,
         unit: this.unit
       }
     },
