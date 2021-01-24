@@ -5,22 +5,22 @@ const dateTimeFormatsCommon = {
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
-    hour12: false,
+    hour12: false
   },
   date: {
     year: 'numeric',
     month: 'short',
-    day: 'numeric',
+    day: 'numeric'
   },
   dateWithoutYear: {
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   },
   dateWithDayOfWeek: {
     weekday: 'short',
     month: 'short',
-    day: 'numeric',
-  },
+    day: 'numeric'
+  }
 }
 
 export default {
@@ -38,7 +38,7 @@ export default {
       'zh-cn': dateTimeFormatsCommon,
       'zh-tw': dateTimeFormatsCommon,
       ko: dateTimeFormatsCommon,
-      'ja-basic': dateTimeFormatsCommon,
+      'ja-basic': dateTimeFormatsCommon
     },
     formatFallbackMessages: true
   },

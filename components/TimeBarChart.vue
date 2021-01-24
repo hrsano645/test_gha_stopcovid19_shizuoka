@@ -394,7 +394,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               time: {
                 unit: 'month',
                 displayFormats: {
-                  month: 'YYYY-MM',
+                  month: 'YYYY-MM'
                 }
               }
             }

@@ -257,7 +257,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
           this.sum(this.cumulativeSum(this.chartData)) + this.initialCumulative
         ).toLocaleString(),
         sText: `${this.$t(
-          '{date}までの累計（内{offset}人は2020/4/26までの累計）', 
+          '{date}までの累計（内{offset}人は2020/4/26までの累計）',
           {
             date,
             offset: this.initialCumulative.toLocaleString()
@@ -500,7 +500,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               time: {
                 unit: 'month',
                 displayFormats: {
-                  month: 'YYYY-MM',
+                  month: 'YYYY-MM'
                 }
               }
             }
