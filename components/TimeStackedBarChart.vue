@@ -8,7 +8,7 @@
         <li>
           {{
             $t(
-              '（注）同一の対象者について複数の検体を検査する場合あり（11月30日までは件数、12月1日以降は人数を集計）'
+              '（注）同一の対象者について複数の検体を検査する場合あり（2020年11月30日までは件数、2020年12月1日以降は人数を集計）'
             )
           }}
         </li>
@@ -243,12 +243,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   }),
   computed: {
     displayInfo() {
+      const lastDay: string = this.labels[this.labels.length - 1]
+      const date = this.$d(new Date(lastDay), 'date')
       if (this.dataKind === 'transition') {
         return {
           lText: this.sum(this.pickLastNumber(this.chartData)).toLocaleString(),
-          sText: `${this.$t('{date}の合計', {
-            date: this.labels[this.labels.length - 1].replace(/^0/, '')
-          })}`,
+          sText: `${this.$t('{date}の合計', { date })}`,
           unit: this.unit
         }
       }
@@ -256,10 +256,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         lText: (
           this.sum(this.cumulativeSum(this.chartData)) + this.initialCumulative
         ).toLocaleString(),
-        sText: `${this.$t('{date}までの累計（内{offset}人は4/26までの累計）', {
-          date: this.labels[this.labels.length - 1].replace(/^0/, ''),
-          offset: this.initialCumulative.toLocaleString()
-        })}`,
+        sText: `${this.$t(
+          '{date}までの累計（内{offset}人は2020/4/26までの累計）',
+          {
+            date,
+            offset: this.initialCumulative.toLocaleString()
+          }
+        )}`,
         unit: this.unit
       }
     },
@@ -313,6 +316,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       })
     },
     displayOption() {
+      const self = this
       const unit = this.unit
       const sumArray = this.eachArraySum(this.chartData)
       const data = this.chartData
@@ -345,7 +349,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               }: ${cases} ${unit} (${this.$t('合計')}: ${casesTotal} ${unit})`
             },
             title(tooltipItem, data) {
-              return String(data.labels![tooltipItem[0].index!])
+              const label = data.labels![tooltipItem[0].index!] as string
+              return self.$d(new Date(label), 'date')
             }
           }
         },
@@ -368,7 +373,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: '#808080',
                 maxRotation: 0,
                 callback: (label: string) => {
-                  return label.split('/')[1]
+                  return label.split('/')[2]
                 }
               }
               // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
@@ -392,9 +397,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               type: 'time',
               time: {
                 unit: 'month',
-                parser: 'M/D',
+                parser: 'Y/M/D',
                 displayFormats: {
-                  month: 'MMM'
+                  month: 'YYYY-MM'
                 }
               }
             }
@@ -472,7 +477,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxRotation: 0,
                 minRotation: 0,
                 callback: (label: string) => {
-                  return label.split('/')[1]
+                  return label.split('/')[2]
                 }
               }
             },
@@ -490,28 +495,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: 'transparent', // #808080
                 padding: 13, // 3 + 10(tickMarkLength)
                 fontStyle: 'bold',
-                callback: (label: string) => {
-                  const monthStringArry = [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec'
-                  ]
-                  const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
-                  return month + '月'
-                }
               },
               type: 'time',
               time: {
-                unit: 'month'
+                unit: 'month',
+                displayFormats: {
+                  month: 'YYYY-MM'
+                }
               }
             }
           ],
