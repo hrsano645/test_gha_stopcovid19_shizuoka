@@ -300,7 +300,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 unit: 'month',
                 parser: 'Y/M/D',
                 displayFormats: {
-                  month: 'MMM'
+                  month: 'YYYY-MM'
                 }
               }
             }
@@ -393,28 +393,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 fontColor: 'transparent', // #808080
                 padding: 13, // 3 + 10(tickMarkLength)
                 fontStyle: 'bold',
-                callback: (label: string) => {
-                  const monthStringArry = [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec'
-                  ]
-                  const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
-                  return month + '月'
-                }
               },
               type: 'time',
               time: {
-                unit: 'month'
+                unit: 'month',
+                displayFormats: {
+                  month: 'YYYY-MM',
+                }
               }
             }
           ],
