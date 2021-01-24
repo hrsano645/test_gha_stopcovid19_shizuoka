@@ -23,7 +23,6 @@ export default (data: DataType[]) => {
   data
     .filter(d => new Date(d['日付']) < today)
     .forEach(d => {
-      const date = new Date(d['日付'])
       const subTotal = d['小計']
       if (!isNaN(subTotal)) {
         patSum += subTotal

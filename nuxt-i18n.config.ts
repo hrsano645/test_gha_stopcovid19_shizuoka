@@ -1,5 +1,3 @@
-import type { NuxtVueI18n } from 'nuxt-i18n'
-
 const dateTimeFormatsCommon = {
   dateTime: {
     year: 'numeric',
