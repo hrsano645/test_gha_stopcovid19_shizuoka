@@ -137,7 +137,7 @@ export default Vue.extend({
           icon: 'CovidIcon',
           title: this.$t('新型コロナウイルス感染症が心配なときに'),
           link:
-            'https://www.pref.shizuoka.jp/kinkyu/covid-19-mosimosoudannsaki.html'
+            'https://www.pref.shizuoka.jp/kinkyu/documents/hatsunetujyusincenter.pdf'
         },
         {
           icon: 'ParentIcon',
