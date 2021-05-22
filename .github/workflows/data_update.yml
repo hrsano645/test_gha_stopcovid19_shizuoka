@@ -12,6 +12,7 @@ jobs:
   data_generate:
     runs-on: ubuntu-20.04
     steps:
+      - name: checkout from covid19-gen-datajson-shizuokapref
       - uses: actions/checkout@v2
         with:
           repository: hrsano645/covid19-gen-datajson-shizuokapref
