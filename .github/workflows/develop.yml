@@ -7,7 +7,6 @@ on:
   workflow_run:
     workflows:
       - "datajson update"
-    branched: [development]
     types:
       - completed
 
