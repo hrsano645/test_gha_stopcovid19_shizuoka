@@ -50,7 +50,8 @@ jobs:
     needs: data_generate
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout from ${{ env.DEVELOPMENT_BRANCH }} 
+        uses: actions/checkout@v2
         with:
           ref: ${{ env.DEVELOPMENT_BRANCH }}
           fetch-depth: 0
@@ -79,7 +80,8 @@ jobs:
     needs: data_generate
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout from ${{ env.MAIN_BRANCH }} 
+        uses: actions/checkout@v2
         with:
           ref: ${{ env.MAIN_BRANCH }}
           fetch-depth: 0
