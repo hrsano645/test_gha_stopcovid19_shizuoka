@@ -61,8 +61,6 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: datajson
-      - name: debug recode datetime
-        run: echo `date` > data/recode_workflow_run_time.txt
       - name: Commit files
         run: |
           cp -rp datajson/* data/
